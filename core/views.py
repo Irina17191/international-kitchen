@@ -36,3 +36,9 @@ class DishTypeListView(generic.ListView):
 class CountryListView(generic.ListView):
     model = Country
     paginate_by = 5
+
+class CookListView(generic.ListView):
+    model = Cook
+    paginate_by = 5
+    # template_name = "core/cook_list.html"
+

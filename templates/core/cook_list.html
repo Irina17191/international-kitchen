@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> Our amazing chefs:</h1>
+  {% if dish_list %}
+    <ul>
+      {% for dish in dish_list %}
+        <li><a href="#">{{ cook.first_name }} {{ cook.last_name }}
+        {{ cook.years_of_experience }} {{ cook.country }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  
+{% endblock %}
