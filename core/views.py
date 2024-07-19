@@ -35,7 +35,7 @@ class DishTypeListView(generic.ListView):
 
 class CountryListView(generic.ListView):
     model = Country
-    paginate_by = 5
+    paginate_by = 10
 
 class CookListView(generic.ListView):
     model = Cook
