@@ -2,10 +2,10 @@
 
 {% block content %}
   <h1> Our amazing chefs:</h1>
-  {% if dish_list %}
+  {% if cook_list %}
     <ul>
-      {% for dish in dish_list %}
-        <li><a href="#">{{ cook.first_name }} {{ cook.last_name }}
+      {% for cook in cook_list %}
+        <li><a href="{% url 'core:cook-detail' pk=cook.id %}">{{ cook.first_name }} {{ cook.last_name }}
         {{ cook.years_of_experience }} {{ cook.country }}</a></li>
       {% endfor %}
     </ul>
