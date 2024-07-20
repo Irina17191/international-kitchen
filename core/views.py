@@ -1,4 +1,6 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 from core.models import Cook, Dish, DishType, Country
 
@@ -29,6 +31,19 @@ class DishListView(generic.ListView):
 
 class DishDetaiView(generic.DetailView):
     model = Dish
+
+
+class DishCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Dish
+    fields = ["name", "description"]
+    success_url = reverse_lazy("core:dish_list")
+
+
+class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Dish
+    fields = ["name", "description"]
+    success_url = reverse_lazy("core:dish_list")
+
 
 
 class DishTypeListView(generic.ListView):

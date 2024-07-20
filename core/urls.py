@@ -10,6 +10,8 @@ from core.views import (
     CountryDetailView,
     DishDetaiView,
     DishTypeDetailView,
+    DishCreateView,
+    DishUpdateView,
 )
 
 
@@ -17,6 +19,8 @@ urlpatterns = [
     path("", index, name="index"),
     path("dishes/", DishListView.as_view(), name="dish-list"),
     path("dishes/<int:pk>/", DishDetaiView.as_view(), name="dish-detail"),
+    path("dishes/create/", DishCreateView.as_view(), name="dish-create"),
+    path("dishes/<int:pk>/update/", DishUpdateView.as_view(), name="dish-update"),
     path("dish-types/", DishTypeListView.as_view(), name="dish-type-list"),
     path("dish-types/<int:pk>", DishTypeDetailView.as_view(), name="dish-type-detail"),
     path("countries/", CountryListView.as_view(), name="country-list"),
