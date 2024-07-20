@@ -32,3 +32,16 @@ class CookUpdateForm(forms.ModelForm):
 
     def clean_years_of_experience(self):
         return self.cleaned_data["years_of_experience"]
+
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=100,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by dish name",
+            }
+        )
+    )
