@@ -9,14 +9,62 @@
   
   
   {% if dish_list %}
-    <ul>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Dish type</th>
+        <th>Cooks</th>
+        <th>Available</th>
+        <th>Details</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    
       {% for dish in dish_list %}
-        <li><a href="{% url 'core:dish-detail' pk=dish.id %}">{{ dish.name }} {{ dish.description }} {{ dish.price }} {{ dish.dish_type }}
-        {{ dish.available }} {{ dish.cooks }}</a></li>
+        <tr>
+          <td>
+              {{ dish.name }}
+          </td>
+          <td>
+              {{ dish.price }}
+          </td>
+          <td>
+              {{ dish.dish_type }}
+          </td>
+          <td>
+              {% for cook in dish.cooks.all %}
+                <a href="{{ cook.get_absolute_url }}">{{ cook.first_name }} {{ cook.last_name }}</a>{% if not forloop.last %}, {% endif %}
+              {% empty %}
+                No cooks assigned
+            {% endfor %}
+          </td>
+          <td>
+              {{ dish.available }}
+          </td>
+        
+        <td>
+              <a href="{% url 'core:dish-detail' pk=dish.id %}">
+                see more👌🏼
+              </a>
+            </td>
+        
+          <td>
+              <a href="{% url 'core:dish-update' pk=dish.id %}">
+                Update
+              </a>
+            </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'core:dish-update' pk=dish.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
       {% endfor %}
-    </ul>
-  {% else %}  
-    <p>There is no dish</p>
+    </table>
+
+  {% else %}
+      <p>There is no dishes.</p>
   {% endif %}
-  
 {% endblock %}

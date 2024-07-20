@@ -11,7 +11,7 @@ admin.site.register(Country)
 class DriverAdmin(UserAdmin):
     list_display = UserAdmin.list_display + ("years_of_experience", "country")
     fieldsets = UserAdmin.fieldsets + (
-        (("Additional info", {"fields": ("years_of_experience", "country")}),)
+        (("Additional info", {"fields": ("years_of_experience", "country", "info")}),)
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
