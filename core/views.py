@@ -35,7 +35,7 @@ class DishDetaiView(generic.DetailView):
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
     model = Dish
-    fields = ["name", "description"]
+    fields = "__all__"
     success_url = reverse_lazy("core:dish-list")
 
 
@@ -63,6 +63,26 @@ class DishTypeDetailView(generic.DetailView):
     template_name = "core/dish_type_detail.html"
     context_object_name = "dish_type"
     paginate_by = 5
+
+
+class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = DishType
+    fields = "__all__"
+    success_url = reverse_lazy("core:dish-type-list")
+    template_name = "core/dish_type_form.html"
+
+
+class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = DishType
+    fields = "__all__"
+    success_url = reverse_lazy("core:dish-type-list")
+    template_name = "core/dish_type_form.html"
+
+
+class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = DishType
+    template_name = "core/dish_type_confirm_delete.html"
+    success_url = reverse_lazy("core:dish-type-list")
 
 
 class CountryListView(generic.ListView):
