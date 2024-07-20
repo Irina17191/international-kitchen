@@ -38,6 +38,13 @@ class DishTypeListView(generic.ListView):
     paginate_by = 5
 
 
+class DishTypeDetailView(generic.DetailView):
+    model = DishType
+    template_name = "core/dish_type_detail.html"
+    context_object_name = "dish_type"
+    paginate_by = 5
+
+
 class CountryListView(generic.ListView):
     model = Country
     paginate_by = 10

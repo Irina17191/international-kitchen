@@ -6,3 +6,15 @@ body {
     float: right;
     margin: 0 2px 0 2px;
 }
+
+
+.btn-custom-logout {
+    background-color: #6c757d; /* Сірий фон */
+    color: white; /* Білий текст */
+    border: 1px solid #6c757d; /* Сірий бордер */
+}
+
+.btn-custom-logout:hover {
+    background-color: #5a6268; /* Темніший сірий при наведенні */
+    border-color: #545b62; /* Темніший бордер при наведенні */
+}

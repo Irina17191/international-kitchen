@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1> Our amazing chefs:</h1>
+  <h1>Our amazing chefs:</h1>
   {% if cook_list %}
     <ul>
       {% for cook in cook_list %}
-        <li><a href="{% url 'core:cook-detail' pk=cook.id %}">{{ cook.first_name }} {{ cook.last_name }}
-        {{ cook.years_of_experience }} {{ cook.country }}</a></li>
+        <li>{{ cook.first_name }} {{ cook.last_name }}</li>
       {% endfor %}
     </ul>
   {% endif %}
-  
 {% endblock %}
