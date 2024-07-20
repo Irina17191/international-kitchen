@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
 
 from core.models import Dish, Cook
 
@@ -23,3 +25,10 @@ class CookCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + ("first_name", "last_name","years_of_experience", "country")
 
 
+class CookUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Cook
+        fields = ("first_name", "years_of_experience", "country")
+
+    def clean_years_of_experience(self):
+        return self.cleaned_data["years_of_experience"]
