@@ -18,3 +18,11 @@ body {
     background-color: #5a6268; /* Темніший сірий при наведенні */
     border-color: #545b62; /* Темніший бордер при наведенні */
 }
+
+
+/* static/styles/style.css */
+.header-image {
+  width: 10%;
+  height: auto;
+  margin-bottom: 20px;
+}
