@@ -1,4 +1,6 @@
+from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -27,11 +29,13 @@ def index(request):
 
 class DishListView(generic.ListView):
     model = Dish
-    # queryset = Dish.objects.select_related("dish_types") ?
-    paginate_by = 5
+    queryset = Dish.objects.all()
+    paginate_by = 8
+    template_name = "core/dish_list.html"
+
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        context=super(DishListView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         name = self.request.GET.get("name", "")
         context["search_form"] = DishSearchForm(
             initial={"name": name}
@@ -42,7 +46,7 @@ class DishListView(generic.ListView):
         queryset = Dish.objects.all()
         form = DishSearchForm(self.request.GET)
         if form.is_valid():
-            return queryset.filter(name__icontains=form.cleaned_data["name"])
+            queryset = queryset.filter(name__icontains=form.cleaned_data["name"])
         return queryset
 
 
@@ -114,7 +118,6 @@ class CountryDetailView(generic.DetailView):
 class CookListView(generic.ListView):
     model = Cook
     paginate_by = 5
-    # template_name = "core/cook_list.html"
 
 
 class CookDetailView(generic.DetailView):
@@ -135,3 +138,8 @@ class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
 class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Cook
     success_url = reverse_lazy("core:cook-list")
+
+
+def logout_view(request: HttpRequest) -> HttpResponse:
+    logout(request)
+    return render(request, "registration/logged_out.html")

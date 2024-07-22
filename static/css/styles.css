@@ -1,28 +1,82 @@
+/*body {*/
+/*    margin-top: 20px;*/
+/*}*/
+
+/*.link-to-page {*/
+/*    float: right;*/
+/*    margin: 0 2px 0 2px;*/
+/*}*/
+
+
+/*.btn-custom-logout {*/
+/*    background-color: #6c757d; !* Сірий фон *!*/
+/*    color: white; !* Білий текст *!*/
+/*    border: 1px solid #6c757d; !* Сірий бордер *!*/
+/*}*/
+
+/*.btn-custom-logout:hover {*/
+/*    background-color: #5a6268; !* Темніший сірий при наведенні *!*/
+/*    border-color: #545b62; !* Темніший бордер при наведенні *!*/
+/*}*/
+
+
+/*!* static/styles/style.css *!*/
+/*.header-image {*/
+/*  width: 10%;*/
+/*  height: auto;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+
+
+
+
+
 body {
-    margin-top: 20px;
+  font-family: 'Manrope', sans-serif; /* Застосовуємо шрифт Manrope до всього тексту */
+  /*font-weight: bold;*/
+  margin-top: 20px;
+  background-image: url('/static/images/background.png'); /* Додати картинку фону */
+  background-size: cover; /* Розтягнути картинку на весь екран */
+  background-position: center; /* Центрувати картинку */
+  background-attachment: fixed; /* Закріпити картинку фону */
 }
 
 .link-to-page {
-    float: right;
-    margin: 0 2px 0 2px;
+  float: right;
+  margin: 0 2px 0 2px;
 }
 
-
 .btn-custom-logout {
-    background-color: #6c757d; /* Сірий фон */
-    color: white; /* Білий текст */
-    border: 1px solid #6c757d; /* Сірий бордер */
+  background-color: #6c757d; /* Сірий фон */
+  color: white; /* Білий текст */
+  border: 1px solid #6c757d; /* Сірий бордер */
 }
 
 .btn-custom-logout:hover {
-    background-color: #5a6268; /* Темніший сірий при наведенні */
-    border-color: #545b62; /* Темніший бордер при наведенні */
+  background-color: #5a6268; /* Темніший сірий при наведенні */
+  border-color: #545b62; /* Темніший бордер при наведенні */
 }
 
+/* Статичні стилі для секції з контентом поверх фону */
+.main-content {
+  background: rgba(255, 255, 255, 0.8); /* Білий фон з прозорістю */
+  padding: 20px;
+  border-radius: 8px; /* Закруглені кути */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь для виділення секції */
+}
 
-/* static/styles/style.css */
+/* Стилі для зображення в заголовку */
 .header-image {
-  width: 10%;
+  width: 50%;
   height: auto;
   margin-bottom: 20px;
+}
+
+/* Стилі для перекриття контенту на фон */
+.content-overlay {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6); /* Білий фон з більшою прозорістю */
+  border-radius: 8px; /* Закруглені кути */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь для виділення */
 }

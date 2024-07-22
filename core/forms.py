@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views import generic
+# from django.contrib.auth.mixins import LoginRequiredMixin
+# from django.views import generic
 
 from core.models import Dish, Cook
 
@@ -22,7 +22,9 @@ class DishForm(forms.ModelForm):
 class CookCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Cook
-        fields = UserCreationForm.Meta.fields + ("first_name", "last_name","years_of_experience", "country")
+        fields = UserCreationForm.Meta.fields + (
+            "first_name", "last_name","years_of_experience", "country"
+        )
 
 
 class CookUpdateForm(forms.ModelForm):

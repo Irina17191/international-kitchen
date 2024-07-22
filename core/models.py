@@ -20,7 +20,11 @@ class Dish(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    dish_type = models.ForeignKey(DishType, on_delete=models.SET_NULL, related_name="dishes", null=True)
+    dish_type = models.ForeignKey(
+        DishType,
+        on_delete=models.SET_NULL,
+        related_name="dishes", null=True
+    )
     cooks = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="dishes")
     available = models.BooleanField(default=True)
 
@@ -45,7 +49,11 @@ class Country(models.Model):
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0)])
+    years_of_experience = models.IntegerField(
+        blank=True,
+        null=True,
+        validators=[MinValueValidator(0)]
+    )
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, blank=True, null=True)
     info = models.TextField(blank=True, null=True)
 
