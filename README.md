@@ -6,7 +6,7 @@ more information to the clients about the cook and his origin and the dish.
 
 ## Check it out!
 
-[international kitchen project  deployed to Render] (https://international-kitchen.render.com/)
+[international kitchen project  deployed to Render] (https://international-kitchen.onrender.com/)
 
 ## Installation
 
