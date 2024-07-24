@@ -8,6 +8,10 @@ more information to the clients about the cook and his origin and the dish.
 
 [international kitchen project  deployed to Render] (https://international-kitchen.onrender.com/)
 
+Credentials:
+Username: admin
+Password: 12345Adminpassword
+
 ## Installation
 
 Python3 must be already installed 
