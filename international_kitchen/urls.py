@@ -16,11 +16,9 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.contrib.auth.views import LogoutView
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth import views as auth_views
 
 from core.views import logout_view
 
@@ -28,5 +26,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("core.urls", namespace="core")),
     path("accounts/", include("django.contrib.auth.urls")),
-    path('logout/', logout_view, name="logout"),
+    path("logout/", logout_view, name="logout"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

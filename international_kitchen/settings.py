@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,12 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-gw0m(l#e*=^8c5-kpt-#$9vf7=_4jcso50$-(v4!5w^$ift3&&")
+load_dotenv()
+
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-ALLOWED_HOSTS = ["127.0.0.1", "international-kitchen.onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "international-kitchen.onrender.com"]
 
 
 # Application definition
@@ -90,7 +93,6 @@ DATABASES = {
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES["default"].update(db_from_env)
 
-# DATABASE_URL = "postgresql://neondb_owner:IAcfTNs6F1gY@ep-curly-glitter-a2y3r0it.eu-central-1.aws.neon.tech/neondb?sslmode=require"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -114,7 +116,7 @@ AUTH_USER_MODEL = "core.Cook"
 
 LOGIN_REDIRECT_URL = "/"
 
-LOGOUT_REDIRECT_URL = '/accounts/registration/logged_out/'
+LOGOUT_REDIRECT_URL = "/logged_out/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
