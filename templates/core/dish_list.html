@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1> Dish List
+  <a href="{% url 'core:dish-create' %}" class="btn btn-primary link-to-page">
+    Create</a>
+  </h1>
+  
+  <form method="get" action="" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="🔎">
+  </form>
+  
+  
+  {% if dish_list %}
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Dish type</th>
+        <th>Cooks</th>
+        <th>Available</th>
+        <th>Details</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    
+      {% for dish in dish_list %}
+        <tr>
+          <td>
+              {{ dish.name }}
+          </td>
+          <td>
+              {{ dish.price }}
+          </td>
+          <td>
+              {{ dish.dish_type }}
+          </td>
+          <td>
+              {% for cook in dish.cooks.all %}
+                <a href="{{ cook.get_absolute_url }}">{{ cook.first_name }} {{ cook.last_name }}</a>{% if not forloop.last %}, {% endif %}
+              {% empty %}
+                No cooks assigned
+            {% endfor %}
+          </td>
+          <td>
+              {{ dish.available }}
+          </td>
+        
+        <td>
+              <a href="{% url 'core:dish-detail' pk=dish.id %}">
+                see more👌🏼
+              </a>
+            </td>
+        
+          <td>
+              <a href="{% url 'core:dish-update' pk=dish.id %}">
+                Update
+              </a>
+            </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'core:dish-delete' pk=dish.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There is no dishes.</p>
+  {% endif %}
+{% endblock %}

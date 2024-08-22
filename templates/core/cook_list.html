@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <h1>
+      Our amazing chefs:
+      <a href="{% url 'core:cook-create' %}" class="btn btn-primary link-to-page">
+        Create
+      </a>
+    </h1>
+  
+  {% if cook_list %}
+    <ul>
+      {% for cook in cook_list %}
+        <li><a href="{% url 'core:cook-detail' pk=cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a> - {{ cook.country }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

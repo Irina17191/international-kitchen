@@ -1,2 +1,26 @@
+# PyCharm
 .idea
+
 venv
+**__pycache__
+
+# Database
+db.sqlite3
+
+# Environments
+.env
+.venv
+
+staticfiles
+
+# Django local media storage
+media/
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3-journal
+media

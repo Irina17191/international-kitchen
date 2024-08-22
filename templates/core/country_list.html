@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Global Recipes from Our Talented International Chefs</h1>
+  <p>Countries list:</p>
+  {% if country_list %}
+    <ul>
+      {% for country in country_list %}
+        <li><a href="{% url 'core:country-detail' pk=country.id %}">{{ country.name }} - {{ country.description }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}
